@@ -2,23 +2,30 @@
   <!-- <form (ngSubmit)="submitForm()" #form="ngForm"> - при використанні декоратора @ViewChild -->
   <form (ngSubmit)="submitForm(form)" #form="ngForm">
       
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{'has-error':email.invalid && email.touched}">
       <label>Email</label>
       <input
-        type="text"
+        type="email"
         class="form-control"
         ngModel
         name="email"
+        required
+        email
+        #email="ngModel"
       >
+      <p *ngIf="email.invalid && email.touched"style="color:blueviolet">Введіть коректно email!</p>
     </div>
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{'has-error':pass.invalid && pass.touched}">
       <label>Пароль</label>
       <input
         type="password"
         class="form-control"
         ngModel
         name="pass"
+        required
+        #pass = "ngModel"
       >
+      <p *ngIf="pass.invalid && pass.touched" style="color:blueviolet">Пароль має бути введений!</p>
     </div>
     <div class="form-group">
       <label>Виберіть країну</label>
@@ -26,6 +33,7 @@
         class="form-control"
         ngModel
         name="country"
+        required
       >
         <option value="ua">Україна</option>
         <option value="by">Білорусь</option>
@@ -39,9 +47,14 @@
           [value]="ans.type"
           ngModel
           name="answer"
+          required
         > {{ans.text}}
       </label>
     </div>
-    <button class="btn btn-success" type="submit">Зберегти</button>
+    <button 
+    class="btn btn-success"
+     type="submit"
+     [disabled]="!form.valid"
+     >Зберегти</button>
   </form>
 </div>
