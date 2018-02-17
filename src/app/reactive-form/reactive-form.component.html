@@ -1,0 +1,39 @@
+<h2>Reactive Form</h2>
+<p>{{text}}</p>
+<form [formGroup]='form' (ngSubmit)="submitForm()">
+  <div>
+    <label>Email</label>
+    <input type="email" class="form-control" formControlName="email">
+  </div>
+  <div class="form-group">
+    <label>Пароль</label>
+    <input type="password" class="form-control"  formControlName="pass">
+    <!-- <p *ngIf="pass.invalid && pass.touched" style="color:blueviolet">Пароль має бути введений!</p> -->
+  </div>
+  <div class="form-group">
+    <label>Виберіть країну</label>
+    <select class="form-control" name="country"  formControlName="country">
+          <option value="ua">Україна</option>
+          <option value="by">Білорусь</option>
+          <option value="ge">Грузія</option>
+        </select>
+  </div>
+  <div class="radio" *ngFor="let ans of answers">
+    <label>
+          <input
+            type="radio"
+            [value]="ans.type"
+            name="answer"
+            formControlName="answer"
+            required
+          > {{ans.text}}
+        </label>
+  </div>
+  <button class="btn btn-success" type="submit">Зберегти</button>
+</form>
+<br>
+<br>
+
+<br>
+
+<br>

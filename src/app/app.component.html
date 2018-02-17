@@ -1,4 +1,6 @@
 <div class="col-xs-8 col-xs-offset-2">
+  <h2>Template-driven forms</h2>
+  <p>Створення і валідація форми на основі HTML-шаблону </p>
   <!-- - при використанні декоратора @ViewChild  -->
    <form (ngSubmit)="submitForm();form.reset()" #form="ngForm"> 
   <!-- <form (ngSubmit)="submitForm(form);form.reset()" #form="ngForm"> -->
@@ -38,5 +40,5 @@
     <button class="btn btn-success" type="submit" [disabled]="!form.valid">Зберегти</button>
   </form>
 <div *ngIf="isSubmited"><pre>{{formData|json}}</pre></div>
-
+<app-reactive-form></app-reactive-form>
 </div>
